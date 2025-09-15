@@ -1,0 +1,22 @@
+#routerView {
+    display: flex;
+    padding: 10px;
+}
+
+.navbar {
+    background-color: #00b2c9;
+}
+
+#header .navbar .container-fluid .btn {
+    font-weight: 1000;
+}
+
+input[type="file"]::file-selector-button {
+  background-color: #00b2c9;
+  color: white;
+  font-weight: 1000;
+  border: none;              
+  padding: 6px 12px;        
+  border-radius: 5px;       
+  cursor: pointer;           
+}
