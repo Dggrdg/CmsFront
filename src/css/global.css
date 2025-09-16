@@ -1,7 +1,9 @@
 #routerView {
     display: flex;
-    padding: 10px;
+    padding: 20px 0px;
 }
+
+/* Header css */
 
 .navbar {
     background-color: #00b2c9;
@@ -11,12 +13,35 @@
     font-weight: 1000;
 }
 
+/* JsonCheck css */
+
 input[type="file"]::file-selector-button {
-  background-color: #00b2c9;
-  color: white;
-  font-weight: 1000;
-  border: none;              
-  padding: 6px 12px;        
-  border-radius: 5px;       
-  cursor: pointer;           
+    background-color: #00b2c9;
+    color: white;
+    font-weight: 1000;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#jsonCheck textarea {
+    width: 560px;
+    height: 300px;
+}
+
+#jsonCheck .uploadbtn {
+    background-color: #00b2c9;
+    color: #ffff;
+    font-weight: 1000;
+}
+
+#jsonCheck .clearbtn {
+    background-color: #4472c4;
+    color: #ffff;
+    font-weight: 1000;
+}
+
+#jsonCheck .hint{
+    font-weight: 1000;
 }
