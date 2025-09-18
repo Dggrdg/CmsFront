@@ -26,7 +26,7 @@ input[type="file"]::file-selector-button {
 }
 
 #jsonCheck textarea {
-    width: 480px;
+    width: 555px;
     height: 300px;
 }
 
@@ -36,7 +36,7 @@ input[type="file"]::file-selector-button {
     font-weight: 1000;
 }
 
-#jsonCheck .clearbtn {
+#jsonCheck .resetbtn {
     background-color: #4472c4;
     color: #ffff;
     font-weight: 1000;
