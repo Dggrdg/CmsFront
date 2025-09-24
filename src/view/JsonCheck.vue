@@ -27,6 +27,8 @@
           class="form-control"
           id="exampleFormControlTextarea1"
           rows="3"
+          v-model="validateMessage"
+          disabled
         ></textarea>
       </div>
     </div>
@@ -35,30 +37,40 @@
 
 <script lang = "ts" setup>
 import axios from "axios";
+import { ref } from "vue";
 
 const formData = new FormData();
+let validateMessage = ref("");
+let input: HTMLInputElement;
 
 function handleFile(event: Event) {
-  const input = event.target as HTMLInputElement;
-
-  if (input.files) {
-    formData.append("file", input.files[0]);
-    console.log(formData);
+  input = event.target as HTMLInputElement;
+  console.log(input);
+  const file = input.files?.[0];
+  if (file) {
+    formData.set("file", file);
   }
 }
 
 //上傳Json
 function uploadJson() {
   axios
-    .post("http://localhost/cms/jsonChecker", formData, {
+    .post("http://localhost:8080/cms/jsonChecker", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     })
-    .then((response) => console.log(response))
-    .catch((error) => console.log(error));
+    .then((response) => {
+      console.log(response);
+      validateMessage.value = response.data;
+    })
+    .catch((error) => {
+      validateMessage.value = error.response.data;
+    });
 }
 
 //重置檔案選擇器
-function resetFile() {}
+function resetFile() {
+  input.files;
+}
 </script>
