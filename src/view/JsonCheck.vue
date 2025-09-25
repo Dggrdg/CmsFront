@@ -27,7 +27,7 @@
           class="form-control"
           id="exampleFormControlTextarea1"
           rows="3"
-          v-model="validateMessage"
+          v-model="validMessage"
           disabled
         ></textarea>
       </div>
@@ -40,13 +40,14 @@ import axios from "axios";
 import { ref } from "vue";
 
 const formData = new FormData();
-let validateMessage = ref("");
+
+let validMessage = ref("");
 let input: HTMLInputElement;
+let file: any;
 
 function handleFile(event: Event) {
   input = event.target as HTMLInputElement;
-  console.log(input);
-  const file = input.files?.[0];
+  file = input.files?.[0];
   if (file) {
     formData.set("file", file);
   }
@@ -62,15 +63,16 @@ function uploadJson() {
     })
     .then((response) => {
       console.log(response);
-      validateMessage.value = response.data;
+      validMessage.value = response.data;
     })
     .catch((error) => {
-      validateMessage.value = error.response.data;
+      validMessage.value = error.response.data;
     });
 }
 
 //重置檔案選擇器
 function resetFile() {
-  input.files;
+  input.value = "";
+  formData.delete("file");
 }
 </script>
