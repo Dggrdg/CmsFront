@@ -56,17 +56,18 @@ function handleFile(event: Event) {
 //上傳Json
 function uploadJson() {
   axios
-    .post("http://localhost:8080/cms/jsonChecker", formData, {
+    .post("http://localhost:8080/cms/jsonValid", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     })
     .then((response) => {
-      console.log(response);
       validMessage.value = response.data;
     })
-    .catch((error) => {
-      validMessage.value = error.response.data;
+    .catch((errors) => {
+      console.log(errors);
+      
+      validMessage.value = errors.response.data;
     });
 }
 
