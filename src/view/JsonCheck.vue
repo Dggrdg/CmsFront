@@ -2,8 +2,14 @@
   <div id="jsonCheck" class="container-fluid">
     <div class="row">
       <div class="col-4">
-        <input id="file" type="file" class="form-control col-4" aria-describedby="basic-addon1"
-          accept=".json,application/json" @change="handleFile($event)" />
+        <input
+          id="file"
+          type="file"
+          class="form-control col-4"
+          aria-describedby="basic-addon1"
+          accept=".json,application/json"
+          @change="handleFile($event)"
+        />
       </div>
       <div class="col-4" style="display: flex; gap: 20px">
         <button type="button" class="btn uploadbtn" @click="uploadJson()">
@@ -17,8 +23,13 @@
         <p class="hint m-0">僅能選擇JSON檔</p>
       </div>
       <div class="col-5">
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" v-model="validMessage"
-          disabled></textarea>
+        <textarea
+          class="form-control"
+          id="exampleFormControlTextarea1"
+          rows="3"
+          v-model="validMessage"
+          disabled
+        ></textarea>
       </div>
     </div>
   </div>
@@ -51,10 +62,14 @@ function uploadJson() {
       },
     })
     .then((response) => {
+      console.log("response.data = " + response.data);
+
       validMessage.value = response?.data;
     })
     .catch((error) => {
-      validMessage.value = error.response?.data;
+      validMessage.value = error.response?.data
+        .map((e: any) => e.message)
+        .join("\n");
     });
 }
 
